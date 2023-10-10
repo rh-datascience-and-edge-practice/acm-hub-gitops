@@ -1,0 +1,9 @@
+apiVersion: console.openshift.io/v1
+kind: ConsoleNotification
+metadata:
+  name: environment-banner
+spec:
+  text: 'Environment: {{ fromClusterClaim "environment" }}'
+  location: BannerTop 
+  color: '#fff'
+  backgroundColor: '{{- if eq (fromClusterClaim "environment") "prod" -}} #FF0000 {{- else -}} #0088ce {{- end -}}'

@@ -1,0 +1,21 @@
+apiVersion: policy.open-cluster-management.io/v1
+kind: PolicyGenerator
+metadata:
+  name: ui-customization-policy-generator
+policyDefaults:
+  namespace: acm-policies
+  remediationAction: enforce
+placementBindingDefaults:
+  name: "binding-policy-ui-customization"
+policies:
+  - name: policy-ui-customization-environment-banner
+    manifests:
+      - path: manifests/environment-banner/
+policySets:
+  - name: "ui-customization"
+    description: "Policy for configuring the custom ui options"
+    policies:
+      - policy-ui-customization-environment-banner
+    generatePolicySetPlacement: false
+    placement:
+      name: placement-policy-ui-customization

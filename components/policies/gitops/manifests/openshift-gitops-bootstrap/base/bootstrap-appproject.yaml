@@ -1,0 +1,13 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: bootstrap
+spec:
+  clusterResourceWhitelist:
+    - group: '*'
+      kind: '*'
+  description: Project for bootstrap cluster app
+  destinations:
+    - namespace: '*'
+      server: https://kubernetes.default.svc
+  sourceRepos: []

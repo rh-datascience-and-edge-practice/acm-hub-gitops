@@ -1,0 +1,23 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: openshift-gitops
+
+resources:
+  - ../../base
+
+patches:
+  - target:
+      kind: Application
+      name: cluster-config-bootstrap
+    patch: |-
+      - op: replace
+        path: /spec/source/repoURL
+        value: https://github.com/rh-datascience-and-edge-practice/openshift-cluster-bootstrap-gitops
+  - target:
+      kind: AppProject
+      name: bootstrap
+    patch: |-
+      - op: add
+        path: /spec/sourceRepos/-
+        value: https://github.com/rh-datascience-and-edge-practice/openshift-cluster-bootstrap-gitops

@@ -1,0 +1,23 @@
+---
+apiVersion: policy.open-cluster-management.io/v1
+kind: PlacementBinding
+metadata:
+  name: placement-policy-ui-customization
+placementRef:
+  name: placement-policy-ui-customization
+  kind: PlacementRule
+  apiGroup: apps.open-cluster-management.io
+subjects:
+  - name: ui-customization
+    kind: PolicySet
+    apiGroup: policy.open-cluster-management.io
+---
+apiVersion: apps.open-cluster-management.io/v1
+kind: PlacementRule
+metadata:
+  name: placement-policy-ui-customization
+spec:
+  clusterSelector:
+    matchExpressions:
+      - key: environment
+        operator: Exists
