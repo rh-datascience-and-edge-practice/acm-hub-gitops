@@ -5,6 +5,7 @@ SLEEP_SECONDS=30
 
 ACM_OPERATOR_PATH="components/operators/advanced-cluster-management/operator/overlays/release-2.8"
 ACM_INSTANCE_PATH="components/operators/advanced-cluster-management/instance/overlays/default"
+ACM_POLICIES_PATH="bootstrap/policies/overlays/default"
 
 echo ""
 echo "Installing RHACM Operator."
@@ -22,7 +23,7 @@ done
 
 echo "Installing the MultiClusterHub"
 
-kustomize build github.com/redhat-cop/gitops-catalog/advanced-cluster-management/instance/base | oc apply -f -
+kustomize build ${ACM_INSTANCE_PATH} | oc apply -f -
 
 echo "Waiting for hub to be installed"
 
@@ -33,13 +34,14 @@ do
   sleep 10
 done
 
-echo "Installing policies and initial secrets"
+# echo "Installing policies and initial secrets"
 
-kustomize build bootstrap/secrets/base | oc apply -f -
-kustomize build bootstrap/policies/overlays/default --enable-alpha-plugins | oc apply -f -
+# kustomize build bootstrap/secrets/base | oc apply -f -
+kustomize build ${ACM_POLICIES_PATH} --enable-alpha-plugins | oc apply -f -
 
-echo "Labeling cluster with 'gitops: local.home'"
-oc label managedcluster local-cluster gitops=local.hub --overwrite=true
+# echo "Labeling cluster with 'gitops: local.home'"
+# oc label managedcluster local-cluster gitops=local.hub --overwrite=true
+oc label managedcluster local-cluster environment=development --overwrite=true
 
 echo "Check policy compliance with the following command:"
 echo "  oc get policy -A"
