@@ -1,9 +1,7 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
-namespace: acm-policies
-
 resources:
-  - namespace.yaml
+  - ../../../../components/namespaces/overlays/default
   - ../../../../components/policies/gitops/overlays/default
   - ../../../../components/policies/ui-customization/overlays/default
