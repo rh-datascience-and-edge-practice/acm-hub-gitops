@@ -10,4 +10,5 @@ spec:
   destinations:
     - namespace: '*'
       server: https://kubernetes.default.svc
-  sourceRepos: []
+  sourceRepos:
+    - https://github.com/rh-datascience-and-edge-practice/openshift-acm-cluster-bootstrap-gitops.git

@@ -13,11 +13,11 @@ patches:
     patch: |-
       - op: replace
         path: /spec/source/repoURL
-        value: https://github.com/rh-datascience-and-edge-practice/openshift-cluster-bootstrap-gitops
+        value: https://github.com/rh-datascience-and-edge-practice/openshift-acm-cluster-bootstrap-gitops.git
   - target:
       kind: AppProject
       name: bootstrap
     patch: |-
       - op: add
         path: /spec/sourceRepos/-
-        value: https://github.com/rh-datascience-and-edge-practice/openshift-cluster-bootstrap-gitops
+        value: https://github.com/rh-datascience-and-edge-practice/openshift-acm-cluster-bootstrap-gitops.git
