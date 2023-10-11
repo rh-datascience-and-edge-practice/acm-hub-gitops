@@ -1,14 +1,14 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: cluster-config-bootstrap
+  name: cluster-config-app-of-apps
   labels:
     gitops.ownedBy: cluster-config
 spec:
   destination:
     namespace: openshift-gitops
     server: https://kubernetes.default.svc
-  project: bootstrap
+  project: cluster-config
   source:
     path: clusters/overlays/{{ fromClusterClaim "gitops" }}
     repoURL: https://github.com/rh-datascience-and-edge-practice/openshift-acm-cluster-bootstrap-gitops.git
