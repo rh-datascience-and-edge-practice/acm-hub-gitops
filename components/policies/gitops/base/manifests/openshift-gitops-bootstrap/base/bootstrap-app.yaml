@@ -11,7 +11,7 @@ spec:
   project: bootstrap
   source:
     path: bootstrap/overlays/{{ fromClusterClaim "gitops" }}
-    repoURL: https://SFFCU-ITS@dev.azure.com/SFFCU-ITS/IT-Infra-Ops/_git/IT-Infra-OCP4-Cluster-GitOps
+    repoURL: https://github.com/rh-datascience-and-edge-practice/openshift-acm-cluster-bootstrap-gitops.git
     targetRevision: main
   syncPolicy:
     automated:
