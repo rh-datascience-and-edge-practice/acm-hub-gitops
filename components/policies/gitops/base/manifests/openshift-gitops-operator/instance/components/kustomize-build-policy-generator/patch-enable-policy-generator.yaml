@@ -3,4 +3,26 @@ kind: ArgoCD
 metadata:
   name: openshift-gitops
 spec:
+  repo:
+    env:
+      - name: KUSTOMIZE_PLUGIN_HOME
+        value: /etc/kustomize/plugin
+    initContainers:
+      - name: policy-generator-install
+        image: registry.redhat.io/rhacm2/multicluster-operators-subscription-rhel8
+        command:
+          - /bin/bash
+        args:
+          - -c
+          - cp /etc/kustomize/plugin/policy.open-cluster-management.io/v1/policygenerator/PolicyGenerator
+            /policy-generator/PolicyGenerator
+        volumeMounts:
+          - mountPath: /policy-generator
+            name: policy-generator
+    volumeMounts:
+      - mountPath: /etc/kustomize/plugin/policy.open-cluster-management.io/v1/policygenerator
+        name: policy-generator
+    volumes:
+      - emptyDir: {}
+        name: policy-generator
   kustomizeBuildOptions: --enable-alpha-plugins
