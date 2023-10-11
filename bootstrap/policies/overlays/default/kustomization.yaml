@@ -5,5 +5,5 @@ namespace: acm-policies
 
 resources:
   - namespace.yaml
-  - ../../../../components/policies/gitops/
-  - ../../../../components/policies/ui-customization
+  - ../../../../components/policies/gitops/overlays/default
+  - ../../../../components/policies/ui-customization/overlays/default
