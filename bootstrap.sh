@@ -40,7 +40,7 @@ done
 kustomize build ${ACM_POLICIES_PATH} --enable-alpha-plugins | oc apply -f -
 
 # echo "Labeling cluster with 'gitops: local.home'"
-# oc label managedcluster local-cluster gitops=local.hub --overwrite=true
+oc label managedcluster local-cluster gitops=acm-hub --overwrite=true
 oc label managedcluster local-cluster environment=development --overwrite=true
 
 echo "Check policy compliance with the following command:"
