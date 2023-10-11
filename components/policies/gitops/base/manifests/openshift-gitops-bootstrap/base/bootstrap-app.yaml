@@ -10,7 +10,7 @@ spec:
     server: https://kubernetes.default.svc
   project: bootstrap
   source:
-    path: bootstrap/overlays/{{ fromClusterClaim "gitops" }}
+    path: clusters/overlays/{{ fromClusterClaim "gitops" }}
     repoURL: https://github.com/rh-datascience-and-edge-practice/openshift-acm-cluster-bootstrap-gitops.git
     targetRevision: main
   syncPolicy:
