@@ -13,4 +13,3 @@ components:
   - ../../components/enable-notifications
   - ../../components/health-check-olm
   - ../../components/health-check-openshift-builds
-  - ../../components/sffcu-gitops-admins
