@@ -1,0 +1,10 @@
+extends: default
+
+rules:
+  document-start: disable
+  line-length: disable
+  comments-indentation: disable
+  indentation:
+    indent-sequences: whatever
+  truthy:
+    ignore: .github/workflows/
