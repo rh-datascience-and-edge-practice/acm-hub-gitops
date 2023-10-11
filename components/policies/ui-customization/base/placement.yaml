@@ -1,26 +1,21 @@
----
 apiVersion: cluster.open-cluster-management.io/v1beta1
 kind: Placement
 metadata:
   name: placement-policy-ui-customization
-  namespace: acm-policies
 spec:
-  predicates:
-  - requiredClusterSelector:
-      labelSelector:
-        matchExpressions:
-        - key: environment
-          operator: Exists
+  clusterSets:
+    - global
 ---
 apiVersion: policy.open-cluster-management.io/v1
 kind: PlacementBinding
 metadata:
-  name: placement-policy-ui-customization
+  name: binding-policy-ui-customization
 placementRef:
-  name: placement-policy-ui-customization
+  apiGroup: cluster.open-cluster-management.io
   kind: Placement
-  apiGroup: apps.open-cluster-management.io
+  name: placement-policy-ui-customization
 subjects:
-  - name: ui-customization
-    kind: PolicySet
-    apiGroup: policy.open-cluster-management.io
+- apiGroup: policy.open-cluster-management.io
+  kind: PolicySet
+  name: ui-customization
+  
