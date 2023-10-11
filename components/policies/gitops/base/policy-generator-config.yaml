@@ -8,10 +8,10 @@ policyDefaults:
 placementBindingDefaults:
   name: "binding-policy-gitops"
 policies:
-  # - name: policy-sealed-secrets-operator
-  #   remediationAction: enforce
-  #   manifests:
-  #     - path: manifests/sealed-secret-operator/overlays/default
+  - name: policy-sealed-secrets-operator
+    remediationAction: enforce
+    manifests:
+      - path: manifests/sealed-secrets-operator/overlays/default
   - name: policy-gitops-subscription
     remediationAction: enforce
     manifests:
@@ -26,7 +26,7 @@ policySets:
   - name: "gitops"
     description: "Policy for bootstrapping cluster with gitops"
     policies:
-      # - policy-sealed-secrets-operator
+      - policy-sealed-secrets-operator
       - policy-gitops-subscription
       - policy-gitops-instance
       - policy-gitops-bootstrap
