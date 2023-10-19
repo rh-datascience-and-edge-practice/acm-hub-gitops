@@ -46,5 +46,5 @@ oc label managedcluster local-cluster environment=development --overwrite=true
 echo "Check policy compliance with the following command:"
 echo "  oc get policy -A"
 
-echo "Once GitOps configuration is complete you may need to run the following to fix Unknown status\n"
-echo "  oc delete secret local-cluster-import -n local-cluster\n"
+# echo "Once GitOps configuration is complete you may need to run the following to fix Unknown status\n"
+# echo "  oc delete secret local-cluster-import -n local-cluster\n"
